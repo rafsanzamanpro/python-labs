@@ -1,9 +1,6 @@
-# ============================================
-# Lab 05 - Exercise 2: Student Marks Investigator
-# File: student_report.py
-# ============================================
 
-# Each student = [ID, name, [marks in 3 assessments]]
+
+# Student information: ID, name, marks
 students = [
     [201, "Amina", [78, 85, 90]],
     [202, "Rahim", [65, 70, 68]],
@@ -13,23 +10,23 @@ students = [
 ]
 
 
-# -------- Task 1 --------
+# Calculate the average of the marks
 def calculate_average(marks):
-    """Return average of marks. Return None if empty or invalid."""
     if not marks:
         return None
+
     for m in marks:
         if m < 0 or m > 100:
             return None
+
     return sum(marks) / len(marks)
 
 
-# -------- Task 2 --------
+# Decide the performance category from the average
 def classify_performance(average):
-    """Return performance category based on average."""
     if average is None:
         return "Invalid Data"
-    if average >= 80:
+    elif average >= 80:
         return "Excellent"
     elif average >= 70:
         return "Good"
@@ -39,9 +36,8 @@ def classify_performance(average):
         return "Needs Improvement"
 
 
-# -------- Task 3 --------
+# Display each student's result
 def display_report(students):
-    """Display each student's ID, name, average, and category."""
     if not students:
         print("No student records.")
         return
@@ -51,33 +47,33 @@ def display_report(students):
 
     for s in students:
         sid, name, marks = s
+
         avg = calculate_average(marks)
-        cat = classify_performance(avg)
+        category = classify_performance(avg)
 
         if avg is None:
-            print(f"{sid:<6}{name:<10}{'---':<10}{cat}")
+            print(f"{sid:<6}{name:<10}{'---':<10}{category}")
         else:
-            print(f"{sid:<6}{name:<10}{avg:<10.2f}{cat}")
+            print(f"{sid:<6}{name:<10}{avg:<10.2f}{category}")
 
 
-# -------- Main / Testing --------
+# Test the functions
 if __name__ == "__main__":
-    print("=== Original Student Report ===")
+
+    print("Student Report")
     display_report(students)
 
-    # ----- Testing & Debugging cases -----
-    print("\n=== Testing & Debugging ===")
-
+    # Test students with the same average
     test_students = [
-        [206, "Karim", [70, 70, 70]],   # equal-marks / tied average
-        [207, "Sadia", [60, 80, 70]],   # tied average with Karim
-        [208, "Bad",   [50, 120, 60]],  # invalid mark (> 100)
-        [209, "Empty", []],             # no marks
+        [206, "Karim", [70, 70, 70]],
+        [207, "Sadia", [60, 80, 70]],
+        [208, "Bad", [50, 120, 60]],
+        [209, "Empty", []],
     ]
 
-    print("\n[Test] Extra cases (tied, invalid, empty):")
+    print("\nTesting extra student records")
     display_report(test_students)
 
-    # Empty student list test
-    print("\n[Test] Empty student list:")
+    # Check what happens when there are no student records
+    print("\nTesting empty student list")
     display_report([])
