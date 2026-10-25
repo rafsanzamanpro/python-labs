@@ -12,3 +12,5 @@ for num in range(2, 1000):
         total = total + num
 
 print("Sum of all primes below 1000 =", total)
+
+
