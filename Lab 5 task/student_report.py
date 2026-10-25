@@ -1,5 +1,3 @@
-
-
 # Student information: ID, name, marks
 students = [
     [201, "Amina", [78, 85, 90]],
@@ -10,19 +8,17 @@ students = [
 ]
 
 
-# Calculate the average of the marks
+# Task 1: Calculate average
 def calculate_average(marks):
     if not marks:
         return None
-
     for m in marks:
         if m < 0 or m > 100:
             return None
-
     return sum(marks) / len(marks)
 
 
-# Decide the performance category from the average
+# Task 2: Classify performance
 def classify_performance(average):
     if average is None:
         return "Invalid Data"
@@ -36,34 +32,25 @@ def classify_performance(average):
         return "Needs Improvement"
 
 
-# Display each student's result
+# Task 3: Display report
 def display_report(students):
     if not students:
         print("No student records.")
         return
-
-    print(f"{'ID':<6}{'Name':<10}{'Average':<10}{'Category'}")
-    print("-" * 45)
-
     for s in students:
-        sid, name, marks = s
-
-        avg = calculate_average(marks)
+        avg = calculate_average(s[2])
         category = classify_performance(avg)
-
         if avg is None:
-            print(f"{sid:<6}{name:<10}{'---':<10}{category}")
+            print(s[0], s[1], "---", category)
         else:
-            print(f"{sid:<6}{name:<10}{avg:<10.2f}{category}")
+            print(s[0], s[1], round(avg, 2), category)
 
 
 # Test the functions
 if __name__ == "__main__":
-
     print("Student Report")
     display_report(students)
 
-    # Test students with the same average
     test_students = [
         [206, "Karim", [70, 70, 70]],
         [207, "Sadia", [60, 80, 70]],
@@ -71,9 +58,8 @@ if __name__ == "__main__":
         [209, "Empty", []],
     ]
 
-    print("\nTesting extra student records")
+    print("Testing extra student records")
     display_report(test_students)
 
-    # Check what happens when there are no student records
-    print("\nTesting empty student list")
+    print("Testing empty student list")
     display_report([])
