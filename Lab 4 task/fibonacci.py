@@ -5,4 +5,4 @@ print("Fibonacci numbers below", N, ":")
 while a < N:
     print(a, end=" ")
     a, b = b, a + b
-print()   # newline
+print()   

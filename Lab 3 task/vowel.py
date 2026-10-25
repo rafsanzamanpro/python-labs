@@ -1,9 +1,6 @@
 ch = input("Enter a character: ")
 
-# Convert to lowercase so 'A' and 'a' both work
-ch = ch.lower()
-
-if ch in "aeiou":
+if ch == 'a' or ch == 'e' or ch == 'i' or ch == 'o' or ch == 'u':
     print(ch, "is a Vowel")
 else:
     print(ch, "is NOT a Vowel")
