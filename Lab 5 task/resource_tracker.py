@@ -8,13 +8,14 @@ resources = [
 ]
 
 
+
 # Task 1: Show all resources
 def display_resources(resources):
     if not resources:
         print("No resources available.")
         return
     for r in resources:
-        print(r)                              # সরল প্রিন্ট (formatting বাদ)
+        print(r)                              
 
 
 # Task 2: Search by category
